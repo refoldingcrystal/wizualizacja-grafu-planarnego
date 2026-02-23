@@ -1,4 +1,4 @@
-= Opis zadania projektowego
+# Opis zadania projektowego
 
 Zadanie polega na stworzeniu aplikacji w języku C oraz JAVA dokonującej podziału grafu na określoną liczbę części. W przypadku aplikacji w języku C aplikacja ma przyjmować wszystkie parametry z linii poleceń. Aplikacja napisana w języku JAVA winna być aplikacją z graficznym interfejsem użytkownika.
 
@@ -8,7 +8,7 @@ Podział grafu ma być wykonywany na liczbę części określoną przez użytkow
 
 Wyjściem programu ma być plik tekstowy lub binarny (w zależności od wyboru użytkownika) zawierający wynik działania programu oraz dane wejściowe które mogą być wykorzystane ponownie w kolejnym wywołaniu programu.
 
-== Dokumentacja projektu C
+## Dokumentacja projektu C
 
 Projekt w języku C musi zawierać następujące rodzaje dokumentacji:
 
