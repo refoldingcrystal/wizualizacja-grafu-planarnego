@@ -3,21 +3,30 @@
 
 #include <stdio.h>
 
-typedef struct edge {
-    char *name;
-    int dest;
-    double weight;
-    struct edge *next;
-} edge_list_t;
+typedef struct {
+  char *name;
+  int src_idx, dest_idx;
+  double weight;
+} edge_t;
 
 typedef struct {
-    int vertices;
-    edge_list_t **edges;
-    int size;
+  int id;
+  double x, y;
+} vertex_t;
+
+typedef struct {
+  vertex_t *vertices;
+  edge_t *edges;
+  int edge_idx;
+  int vertex_idx;
+  int edge_capacity;
+  int vertex_capacity;
 } graph_t;
 
-void init_graph(graph_t *graph);
+graph_t *init_graph();
 void free_graph(graph_t *graph);
-void print_graph(graph_t *graph, FILE *f);
+void print_graph(graph_t *graph, char *filename);
+void load_graph(graph_t *graph, char *filename);
+int get_vertex_idx(graph_t *graph, int id);
 
 #endif
