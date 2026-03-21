@@ -34,7 +34,7 @@ void print_graph(graph_t *graph, char *filename) {
     if (!f) {
         return;
     }
-    printf("hello");
+
     for (int i = 0; i < graph->edge_idx; i++) {
         edge_t *edge = &graph->edges[i];
         int src = graph->vertices[edge->src_idx].id;
