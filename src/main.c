@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
     int opt;
     char *input = NULL;
     char *output = NULL;
+    FILE *output_file = stdout;
     char *format = "txt";
     char *algorithm = NULL;
     int verbose = 0;
@@ -35,16 +36,14 @@ int main(int argc, char **argv) {
     }
 
     if (verbose) printf("Info: Tryb verbose wlaczony\n");
-    if (verbose) printf("Info: Otwieram plik '%s'\n", input);
+    if (verbose) printf("Info: Wczytuje graf z pliku '%s'\n", input);
     FILE *input_file = fopen(input, "r");
     if (!input_file) {
         fprintf(stderr, "Blad: Nie mozna otworzyc pliku '%s'\n", input);
         return EXIT_FAILURE;
     }
-
-    if (verbose) printf("Info: Wczytuje graf\n");
     graph_t *graph = init_graph();
-    load_graph(graph, input);
+    load_graph(graph, input_file);
 
     if (algorithm == NULL) {
         fprintf(stderr, "Blad: Nie podano nazwy algorytmu\n");
@@ -58,12 +57,19 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Blad: '%s' nie jest obslugiwanym algorytmem\n", algorithm);
         return EXIT_FAILURE;
     }
-
-    // write_output(output, graph, format, verbose);
     
-    printf("Info: Wypisuje graf\n");
-
-    print_graph(graph, output);
+    if (output) {
+        printf("Info: Zapisuje graf do pliku '%s'\n", output);
+        output_file = fopen(output, "w");
+        if (!output_file){
+            fprintf(stderr, "Blad: Nie mozna otworzyc pliku wyjściowego");
+            return EXIT_FAILURE;
+        }
+    } else {
+        printf("Info: Wypisuje graf na standardowe wyjscie\n");
+    }
+    // print_graph(graph, output_file);
+    write_output(output_file, graph, format, verbose);
     free_graph(graph);
 
     return EXIT_SUCCESS;

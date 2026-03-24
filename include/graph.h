@@ -25,8 +25,8 @@ typedef struct {
 
 graph_t *init_graph();
 void free_graph(graph_t *graph);
-void print_graph(graph_t *graph, char *filename);
-void load_graph(graph_t *graph, char *filename);
+void print_graph(graph_t *graph, FILE *f);
+void load_graph(graph_t *graph, FILE *f);
 int get_vertex_idx(graph_t *graph, int id);
 
 #endif
