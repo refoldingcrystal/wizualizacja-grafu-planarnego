@@ -29,12 +29,7 @@ void free_graph(graph_t *graph) {
     free(graph);
 }
 
-void print_graph(graph_t *graph, char *filename) {
-    FILE *f = fopen(filename, "w");
-    if (!f) {
-        return;
-    }
-
+void print_graph(graph_t *graph, FILE *f) {
     for (int i = 0; i < graph->edge_idx; i++) {
         edge_t *edge = &graph->edges[i];
         int src = graph->vertices[edge->src_idx].id;
@@ -69,12 +64,7 @@ int get_vertex_idx(graph_t *graph, int id) {
     return new_idx;
 }
 
-void load_graph(graph_t *graph, char *filename) {
-    FILE *f = fopen(filename, "r");
-    if (!f) {
-        return;
-    }
-
+void load_graph(graph_t *graph, FILE *f) {
     char edge_name[64];
     int src, dest;
     double weight;
