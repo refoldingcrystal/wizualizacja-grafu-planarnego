@@ -1,19 +1,38 @@
-# Opis zadania projektowego
+# Wizualizacja grafu planarnego
 
-Zadanie polega na stworzeniu aplikacji w języku C oraz JAVA dokonującej podziału grafu na określoną liczbę części. W przypadku aplikacji w języku C aplikacja ma przyjmować wszystkie parametry z linii poleceń. Aplikacja napisana w języku JAVA winna być aplikacją z graficznym interfejsem użytkownika.
+## Opis zadania projektowego
 
-Graf do podziału zostanie przekazany w formacie tekstowym - opis pojawi się poniżej.
+Zadanie polega na stworzeniu aplikacji która ma wyznaczać współrzędne węzłów dla "ładnej" wizualizacji grafu planarnego podanego w postaci listy krawędzi.
 
-Podział grafu ma być wykonywany na liczbę części określoną przez użytkownika przy założeniu, że liczba wierzchołków w powstałych częściach grafu nie będzie się różnić o więcej niż zadany margines procentowy oraz liczba przeciętych krawędzi będzie jak najmniejsza. Domyślny podział przy braku określonej wartości przez użytkownika to 2 przy domyślnym marginesie 10%.
+## Użycie
 
-Wyjściem programu ma być plik tekstowy lub binarny (w zależności od wyboru użytkownika) zawierający wynik działania programu oraz dane wejściowe które mogą być wykorzystane ponownie w kolejnym wywołaniu programu.
+1. `make` - zbudowanie programu
+2. `a.out <plik wejsciowy> [dodatkowe argumenty]`
 
-## Dokumentacja projektu C
+Pomocny skrypt w python do zwizualizowania działania programu (wymaga bibliotek `matplotlib` oraz `networkx`):
 
-Projekt w języku C musi zawierać następujące rodzaje dokumentacji:
+`python3 visualize.py <plik z krawedziami> <plik ze wspolrzednymi>`
 
-1. Dokumentacja funkcjonalna opisująca działanie projektu
-2. Dokumentacja implementacyjna przedstawiająca szczegóły implementacyjne programu, specyfikacje wejścia oraz wyjścia, plików wyjściowych, etc.
-3. Końcowa dokumentacja projektu
+## Przykład
 
-**Część 1 oraz 2 dokumentacji zostanie przekazana innemu zespołowi**
+Plik z krawędziami:
+
+```
+AB   1  2  1
+BC   2  3  1
+CD   3  4  1
+DB   4  2  1.407
+```
+
+Plik wyjściowy:
+
+```
+1 72.0 81.0
+2 77.0 40.0
+3 93.0 35.0
+4 86.0 92.0
+```
+
+Wynik działania skryptu w python dla powyższych danych:
+
+![figure 1](assets/figure_1.png)
