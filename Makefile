@@ -22,7 +22,7 @@ clean:
 	rm -rf $(OBJ_DIR) $(BIN)
 
 test_tutte: all
-	./$(BIN) tests/in/graph_1.in -va tutte -o graph_1.out
-	python3 visualize.py tests/in/graph_1.in graph_1.out
+	./$(BIN) tests/example_graph -va tutte -o graph_1.out
+	python3 visualize.py tests/example_graph graph_1.out
 
 .PHONY: all clean test
